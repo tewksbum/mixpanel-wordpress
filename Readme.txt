@@ -16,3 +16,6 @@ How does it work?
 On every page in WordPress, you'll see an option panel for MixPanel Event Label. Whatever value you put in this label, will
 show up as an event in MixPanel.
 
+@TODO
+
+admin screen to let you specify your token and test mode
