@@ -20,3 +20,4 @@ show up as an event in MixPanel.
 
 1. admin screen to let you specify your token and test mode
 2. build some logic to do smarter tracking
+3. add stuff to track links in a smart way
