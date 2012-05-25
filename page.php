@@ -14,6 +14,7 @@ class MixPanel {
   static function get_post_event_label()
   {
     global $post;
+	hi;
     return get_post_meta( $post->ID, 'mixpanel_event_label', true );
   }
 
@@ -30,7 +31,8 @@ class MixPanel {
       return false; 
     } 
     echo "<script type='text/javascript'>
-      mixpanel.track(\"$event_label\");
+	  mixpanel.register_once({ 'first_referrer': document.referrer });
+      mixpanel.track(\"$event_label\", {'referrer': document.referrer });
     </script> "; 
 
 
