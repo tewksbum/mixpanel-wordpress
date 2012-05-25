@@ -11,11 +11,9 @@ There are some variables that are necessary to make the plugin do it's thing.
 1. **MIXPANEL_DEBUG:** If your site is in development mode, you can turn this on and see debug messages in your Firebug Console
 1. **MIXPANEL_SUBDOMAIN_COOKIE:** Make this true if you have MixPanel on two sites with the same token. Like blog.domain.com, app.domain.com 
 ```
-define('MIXPANEL_TOKEN','YOURMIXPANELTOKEN'); 
-
-define('MIXPANEL_DEBUG', true); 
-
-define('MIXPANEL_SUBDOMAIN_COOKIE',true); 
+ define('MIXPANEL_TOKEN','YOURMIXPANELTOKEN'); 
+ define('MIXPANEL_DEBUG', true); 
+ define('MIXPANEL_SUBDOMAIN_COOKIE',true); 
 ```
 ##How does it work? 
 
