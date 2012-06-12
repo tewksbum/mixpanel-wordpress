@@ -1,5 +1,20 @@
-This is the MixPanel Plugin for WordPress. 
+=== MixPanel  ===
+Contributors: zippykid
+Tags: analytics, funnels
+Requires at least: 3.3
+Tested up to: 3.4RC2
+Stable tag: trunk 
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+This is a plugin that allows you to get MixPanel analytics up and running on WordPress very easily.  
+
+== Description ==
+
+This plugin adds a meta box to the bottom of every page, which will allow you to mark the event of the page landing in MixPanel accordingly.
+You no longer need to add the mixpanel.track() javascript snippet in your theme files. 
+
+== Installation ==  
 To install the plugin, either upload the .zip file using the plugin installer in your wp-admin, or
 SFTP the files over to your wp-content/plugins/ directory.
 
@@ -7,9 +22,9 @@ Configuration Options
 
 There are some variables that are necessary to make the plugin do it's thing. 
 
-MIXPANEL_TOKEN: This is the token for your specific project. 
-MIXPANEL_DEBUG: If your site is in development mode, you can turn this on and see debug messages in your Firebug Console
-MIXPANEL_SUBDOMAIN_COOKIE: Make this true if you have MixPanel on two sites with the same token. Like blog.domain.com, app.domain.com 
+1. MIXPANEL_TOKEN: This is the token for your specific project. 
+1. MIXPANEL_DEBUG: If your site is in development mode, you can turn this on and see debug messages in your Firebug Console
+1. MIXPANEL_SUBDOMAIN_COOKIE: Make this true if you have MixPanel on two sites with the same token. Like blog.domain.com, app.domain.com 
 
 How does it work? 
 
