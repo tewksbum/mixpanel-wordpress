@@ -16,11 +16,11 @@ You no longer need to add the mixpanel.track() javascript snippet in your theme 
 
 == Installation ==  
 To install the plugin, either upload the .zip file using the plugin installer in your wp-admin, or
-SFTP the files over to your wp-content/plugins/ directory.
+SFTP the files over to your wp-content/plugins/ directory and activate it. 
 
 Configuration Options
 
-There are some variables that are necessary to make the plugin do it's thing. 
+There are some variables that are necessary to make the plugin do it's thing, you can set these settings under the Settings -> Mixpanel Options page
 
 1. MIXPANEL_TOKEN: This is the token for your specific project. 
 1. MIXPANEL_DEBUG: If your site is in development mode, you can turn this on and see debug messages in your Firebug Console
@@ -33,6 +33,5 @@ show up as an event in MixPanel.
 
 @TODO
 
-1. admin screen to let you specify your token and test mode
 2. build some logic to do smarter tracking
 3. add stuff to track links in a smart way
