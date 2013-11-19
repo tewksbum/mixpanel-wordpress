@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: MixPanel for WordPress 
-Plugin URI: http://zippykid.com/
+Plugin URI: http://pressable.com/
 Description: A relatively easy way to integrate MixPanel with your WordPress site
-Author: Vid Luther <vid@zippykid.com>
+Author: Vid Luther <code@pressable.com>
 Version: 0.3
-Author URI: http://zippykid.com/
+Author URI: http://pressable.com/
 */
 
 // if( is_admin() ){
