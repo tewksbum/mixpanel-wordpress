@@ -32,7 +32,14 @@ class MixPanel {
       return false;  
     }
     echo "<script type='text/javascript'>
-	     mixpanel.register_once({ 'first_referrer': document.referrer });
+      var rightNow = new Date(); 
+      var humanDate = rightNow.toDateString(); 
+
+	     mixpanel.register_once({ 
+        'first_wp_page': document.title,
+        'first_wp_contact': humanDate 
+        
+        });
        mixpanel.track(\"viewed page\", 
           {
             'page name': document.title, 
