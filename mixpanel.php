@@ -4,7 +4,7 @@ Plugin Name: MixPanel for WordPress
 Plugin URI: http://pressable.com/
 Description: A relatively easy way to integrate MixPanel with your WordPress site
 Author: Vid Luther <code@pressable.com>
-Version: 0.3
+Version: 0.4
 Author URI: http://pressable.com/
 */
 
