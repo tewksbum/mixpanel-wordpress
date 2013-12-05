@@ -33,7 +33,13 @@ class MixPanel {
     }
     echo "<script type='text/javascript'>
 	     mixpanel.register_once({ 'first_referrer': document.referrer });
-       mixpanel.track(\"WP $event_label\", {'referrer': document.referrer });
+       mixpanel.track(\"viewed page\", 
+          {
+            'page name': document.title, 
+            'page url': window.location.pathname
+
+          }
+        ); 
     </script> "; 
 
 
