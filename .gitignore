@@ -1,0 +1,7 @@
+# Eclipse
+.project
+.buildpath
+.settings
+
+# Vim
+**/*\~
