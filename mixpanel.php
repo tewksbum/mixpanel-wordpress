@@ -14,7 +14,6 @@ Author URI: http://pressable.com/
 //   require_once dirname( __FILE__ ) . '/page.php';
 // }
 
-
 namespace zippykid; 
 
 class mixPanel {
@@ -135,6 +134,7 @@ class mixPanel {
 
 }
 
-$mixPanel = new \zippykid\mixPanel(); 
+$mixPanel = new mixPanel(); 
+
 
 ?>
