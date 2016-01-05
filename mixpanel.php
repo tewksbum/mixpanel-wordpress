@@ -14,10 +14,21 @@ Author URI: http://pressable.com/
 //   require_once dirname( __FILE__ ) . '/page.php';
 // }
 
-namespace zippykid; 
+namespace mixpanel; 
 
 class mixPanel {
-	 public function __construct(){
+	
+	// Returns the contents of a parsed PHP file as a string
+	public static function get_require_contents($file) {
+		if (is_file($file)) {
+			ob_start();
+			require $file;
+			return ob_get_clean();
+		}
+		return false;
+	}
+	
+	public function __construct(){
         if(is_admin()){
 	    	add_action('admin_menu', array($this, 'add_settings_page'));
 	    	add_action('admin_init', array($this, 'mixpanel_init'));
