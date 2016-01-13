@@ -48,7 +48,7 @@ class MixPanel {
     ?>
     <script type='text/javascript'>
     	jQuery( document ).ready(function() {
-			  jQuery('a.sign-in, button.sign-in').click(function() {
+			  jQuery('#site-header .sign-in button').click(function() {
 				  var signInCount = mixpanel.get_property('Sign In Count') || 0;
 				  signInCount++;
 				  mixpanel.register({
@@ -57,33 +57,29 @@ class MixPanel {
 				  });
 				  mixpanel.track('Sign In');
 			  });
-			  jQuery('a.demo').click(function(event) {
+			  jQuery('#site-wrapper a[href|="/demo"]').click(function(event) {
 				  mixpanel.track('Book a Demo', {
 					  'source page': document.title,
 					  'button location': event.currentTarget.id
 				  });
 			  });
-			  jQuery('a.essentials').click(function(event) {
-				  mixpanel.track('Essentials Clicked', {
-					  'Topic': jQuery(event.currentTarget).text()
+			  jQuery('#site-header a[href|="/demo"]').click(function(event) {
+				  mixpanel.track('Book a Demo', {
+					  'source page': document.title,
+					  'button location': event.currentTarget.id
 				  });
 			  });
-			  jQuery('a.learn').click(function(event) {
-				  mixpanel.track('Learn More Clicked', {
-					  'Topic': jQuery(event.currentTarget).text()
-				  });
-			  });
-			  jQuery('#footer-demo').click(function(event) {
+			  jQuery('#site-footer a[href|="/demo"]').click(function(event) {
 				  mixpanel.track('Book a Demo', {
 					  'button location': 'Footer'
 				  });
 			  });
-			  jQuery('a.support').click(function(event) {
+			  jQuery('a[href|="/support"]').click(function(event) {
 				  mixpanel.track('Support Clicked', {
 					  'Topic': jQuery(event.currentTarget).text()
 				  });
 			  });
-			  jQuery('a.download').click(function(event) {
+			  jQuery('ul.download a, a[href|="/app-downloads"]').click(function(event) {
 				  mixpanel.register({'App store': event.currentTarget.id});
 				  mixpanel.track('Download App');
 			  });
