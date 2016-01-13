@@ -34,20 +34,67 @@ class MixPanel {
     	self::no_mixpanel_token_found();
     	return false;
     }
-
-    echo "<script type='text/javascript'>
-	  mixpanel.register_once({ 
-        'first_wp_page': document.title,
-        'first_wp_contact': new Date().toDateString() 
-      });
-      mixpanel.track(\"$event_label\", 
-          {
-            'page name': document.title, 
-            'page url': window.location.pathname
-          }
-      ); 
-    </script>"; 
-
+	
+    $event_label = self::get_post_event_label();
+    if (!empty($event_label)) {
+		echo "<script type='text/javascript'>
+		  mixpanel.register_once({ 
+			'First page': document.title,
+			'First page visit date': new Date().toISOString()
+		  });
+		  mixpanel.track(\"$event_label\", {
+			'Page Name': document.title, 
+			'Page Url': window.location.pathname
+		  });
+		 </script>";
+    }
+    /*
+     * START STATIC PAGE MIXPANEL JS
+     */
+    ?>
+    <script type='text/javascript'>
+    	jQuery( document ).ready(function() {
+			  jQuery('#site-header .sign-in button').click(function() {
+				  var signInCount = mixpanel.get_property('Sign In Count') || 0;
+				  signInCount++;
+				  mixpanel.register({
+					  'Sign In Count': signInCount,
+					  'Last Sign In Date': new Date().toISOString()
+				  });
+				  mixpanel.track('Sign In');
+			  });
+			  jQuery('#site-wrapper a[href|="/demo"]').click(function(event) {
+				  mixpanel.track('Book a Demo', {
+					  'source page': document.title,
+					  'button location': event.currentTarget.id
+				  });
+			  });
+			  jQuery('#site-header a[href|="/demo"]').click(function(event) {
+				  mixpanel.track('Book a Demo', {
+					  'source page': document.title,
+					  'button location': event.currentTarget.id
+				  });
+			  });
+			  jQuery('#site-footer a[href|="/demo"]').click(function(event) {
+				  mixpanel.track('Book a Demo', {
+					  'button location': 'Footer'
+				  });
+			  });
+			  jQuery('a[href|="/support"]').click(function(event) {
+				  mixpanel.track('Support Clicked', {
+					  'Topic': jQuery(event.currentTarget).text()
+				  });
+			  });
+			  jQuery('ul.download a, a[href|="/app-downloads"]').click(function(event) {
+				  mixpanel.register({'App store': event.currentTarget.id});
+				  mixpanel.track('Download App');
+			  });
+		  });
+    </script>
+    <?php 
+    /*
+     * END STATIC PAGE MIXPANEL JS
+     */
     return true; 
   }
 
