@@ -57,41 +57,41 @@ class MixPanel {
 				  });
 				  mixpanel.track('Sign In');
 			  });
-			  jQuery('#site-wrapper a[href|="/demo"]').click(function(event) {
+			  jQuery('#site-wrapper a[href^="/demo"]').click(function(event) {
 			  	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
 				  mixpanel.track(eventName, {
 					  'source page': document.title,
 					  'button location': event.currentTarget.id
 				  });
 			  });
-			  jQuery('#site-header a[href|="/demo"]').click(function(event) {
+			  jQuery('#site-header a[href^="/demo"]').click(function(event) {
 			  	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
 				  mixpanel.track(eventName, {
 					  'source page': document.title,
 					  'button location': event.currentTarget.id
 				  });
 			  });
-			  jQuery('#site-footer a[href|="/demo"]').click(function(event) {
+			  jQuery('#site-footer a[href^="/demo"]').click(function(event) {
 			  	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
 				  mixpanel.track(eventName, {
 					  'button location': 'Footer'
 				  });
 			  });
-			  jQuery('form[action|="/demo-2"]').submit(function(event) {
+			  jQuery('form[action^="/demo-2"]').submit(function(event) {
 			  	  mixpanel.track('Demo Form Submission');
 			  });
-			  jQuery('form[action|="/demo-ra"]').submit(function(event) {
+			  jQuery('form[action^="/demo-ra"]').submit(function(event) {
 			  	  mixpanel.track('Demo Risk Analysis Form Submission');
 			  });
-			  jQuery('form[action|="/partner"]').submit(function(event) {
+			  jQuery('form[action^="/partner"]').submit(function(event) {
 			  	  mixpanel.track('Partner Form Submission');
 			  });
-			  jQuery('a[href|="/support"]').click(function(event) {
+			  jQuery('a[href^="/support"]').click(function(event) {
 				  mixpanel.track('Support Clicked', {
 					  'Topic': jQuery(event.currentTarget).text()
 				  });
 			  });
-			  jQuery('ul.download a, a[href|="/app-downloads"]').click(function(event) {
+			  jQuery('ul.download a, a[href^="/app-downloads"]').click(function(event) {
 				  mixpanel.register({'App store': event.currentTarget.id});
 				  mixpanel.track('Download App');
 			  });
