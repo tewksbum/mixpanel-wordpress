@@ -77,13 +77,13 @@ class MixPanel {
 					  'button location': 'Footer'
 				  });
 			  });
-			  jQuery('form[action|="/demo-2"] input[type="submit"]').click(function(event) {
+			  jQuery('form[action|="/demo-2"]').submit(function(event) {
 			  	  mixpanel.track('Demo Form Submission');
 			  });
-			  jQuery('form[action|="/demo-ra"] input[type="submit"]').click(function(event) {
+			  jQuery('form[action|="/demo-ra"]').submit(function(event) {
 			  	  mixpanel.track('Demo Risk Analysis Form Submission');
 			  });
-			  jQuery('form[action|="/partner"] input[type="submit"]').click(function(event) {
+			  jQuery('form[action|="/partner"]').submit(function(event) {
 			  	  mixpanel.track('Partner Form Submission');
 			  });
 			  jQuery('a[href|="/support"]').click(function(event) {
