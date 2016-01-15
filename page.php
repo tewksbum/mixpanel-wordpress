@@ -58,21 +58,33 @@ class MixPanel {
 				  mixpanel.track('Sign In');
 			  });
 			  jQuery('#site-wrapper a[href|="/demo"]').click(function(event) {
-				  mixpanel.track('Book a Demo', {
+			  	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
+				  mixpanel.track(eventName, {
 					  'source page': document.title,
 					  'button location': event.currentTarget.id
 				  });
 			  });
 			  jQuery('#site-header a[href|="/demo"]').click(function(event) {
-				  mixpanel.track('Book a Demo', {
+			  	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
+				  mixpanel.track(eventName, {
 					  'source page': document.title,
 					  'button location': event.currentTarget.id
 				  });
 			  });
 			  jQuery('#site-footer a[href|="/demo"]').click(function(event) {
-				  mixpanel.track('Book a Demo', {
+			  	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
+				  mixpanel.track(eventName, {
 					  'button location': 'Footer'
 				  });
+			  });
+			  jQuery('form[action|="/demo-2"] input[type="submit"]').click(function(event) {
+			  	  mixpanel.track('Demo Form Submission');
+			  });
+			  jQuery('form[action|="/demo-ra"] input[type="submit"]').click(function(event) {
+			  	  mixpanel.track('Demo Risk Analysis Form Submission');
+			  });
+			  jQuery('form[action|="/partner"] input[type="submit"]').click(function(event) {
+			  	  mixpanel.track('Partner Form Submission');
 			  });
 			  jQuery('a[href|="/support"]').click(function(event) {
 				  mixpanel.track('Support Clicked', {
