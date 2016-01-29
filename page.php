@@ -47,6 +47,30 @@ class MixPanel {
      */
     ?>
     <script type='text/javascript'>
+    	function monaeo_form_onsuccess(id) {
+        	var form = jQuery('input[name="_wpcf7"][value="' + id + '"]').closest("form");
+        	var email = form.find('[name="email"]').val();
+        	var firstName = form.find('[name="first-name"]').val();
+        	var lastName = form.find('[name="last-name"]').val();
+        	var company = form.find('[name="company"]').val();
+        	var title = form.find('[name="title"]').val();
+        	var phone = form.find('[name="phone"]').val();
+        	mixpanel.alias(email);
+        	mixpanel.register({
+            	"email": email,
+            	"first name": firstName,
+            	"last name": lastName,
+            	"company": company,
+            	"title": title,
+            	"phone": phone
+        	});
+        	mixpanel.people.set({
+            	"$email": email,
+            	"$first_name": firstName,
+            	"$last_name": lastName
+            });
+    	}
+
     	jQuery( document ).ready(function() {
 			  jQuery('#site-header .sign-in button').click(function() {
 				  var signInCount = mixpanel.get_property('Sign In Count') || 0;
@@ -76,15 +100,6 @@ class MixPanel {
 				  mixpanel.track(eventName, {
 					  'button location': 'Footer'
 				  });
-			  });
-			  jQuery('form[action^="/demo-2"]').submit(function(event) {
-			  	  mixpanel.track('Demo Form Submission');
-			  });
-			  jQuery('form[action^="/demo-ra"]').submit(function(event) {
-			  	  mixpanel.track('Demo Risk Analysis Form Submission');
-			  });
-			  jQuery('form[action^="/partner"]').submit(function(event) {
-			  	  mixpanel.track('Partner Form Submission');
 			  });
 			  jQuery('a[href^="/support"]').click(function(event) {
 				  mixpanel.track('Support Clicked', {
