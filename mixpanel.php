@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: MixPanel for WordPress 
-Plugin URI: http://pressable.com/
-Description: A relatively easy way to integrate MixPanel with your WordPress site
+Plugin URI: https://github.com/monaeo/mixpanel-wordpress
+Description: A relatively easy way to integrate MixPanel with your WordPress site (forked by Monaeo)
 Author: Vid Luther <code@pressable.com>
 Version: 0.4
 Author URI: http://pressable.com/
@@ -146,6 +146,5 @@ class mixPanel {
 }
 
 $mixPanel = new mixPanel(); 
-
 
 ?>
