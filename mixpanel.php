@@ -1,23 +1,17 @@
 <?php
 /*
-Plugin Name: MixPanel for WordPress 
+Plugin Name: MixPanel for WordPress
 Plugin URI: https://github.com/monaeo/mixpanel-wordpress
 Description: A relatively easy way to integrate MixPanel with your WordPress site (forked by Monaeo)
-Author: Vid Luther <code@pressable.com>
-Version: 0.4
-Author URI: http://pressable.com/
+Author: tewksbum <marcus@mavenxinc.com>
+Version: 0.1
+Author URI: http://mavenx.com/
 */
 
-// if( is_admin() ){
-   //require_once dirname( __FILE__ ) . '/meta-box.php';
-// } else {
-//   require_once dirname( __FILE__ ) . '/page.php';
-// }
-
-namespace mixpanel; 
+namespace mixpanel;
 
 class mixPanel {
-	
+
 	// Returns the contents of a parsed PHP file as a string
 	public static function get_require_contents($file) {
 		if (is_file($file)) {
@@ -27,7 +21,7 @@ class mixPanel {
 		}
 		return false;
 	}
-	
+
 	public function __construct(){
         if(is_admin()){
 	    	add_action('admin_menu', array($this, 'add_settings_page'));
@@ -49,23 +43,21 @@ class mixPanel {
 ?>
 	<div class="wrap">
 	    <?php screen_icon(); ?>
-	    <h2>Mixpanel Settings</h2>		
-	    <?php settings_errors(  ) ?>	
+	    <h2>Maven Mixpanel Settings</h2>
+	    <?php settings_errors(  ) ?>
 	    <form method="post" action="options.php">
 	    <?php
             // This prints out all hidden setting fields
-		    settings_fields('mixpanel_settings_group');	
+		    settings_fields('mixpanel_settings_group');
 		    do_settings_sections('mixpanel_options');
 		?>
 	        <?php submit_button(); ?>
 	    </form>
 	</div>
-	<h1>Integrating With Contact Forms</h1>
-	<p>To create a people profile when a contact form is sumitted add <code>on_sent_ok: monaeo_form_onsuccess(id)</code>, to the "Additional Settings" tab of the contact form. Set <code>id</code> to the id of the contact form from the shortcode (eg. 786).</p>
 	<p>To post an event, add <code>mixpanel.track('Event Name')</code>.
 <?php
     }
-	
+
 	public function print_section_info(){
 		print 'Enter your Mixpanel settings below:';
     }
@@ -74,15 +66,15 @@ class mixPanel {
 	    $name = esc_attr( $args['name'] );
 	    $value = esc_attr( $args['value'] );
 	    if(strlen($value) > 0) {
-	    	$size = strlen($value) + 2; 
+	    	$size = strlen($value) + 2;
 	    } else {
-	    	$size = 10; 
+	    	$size = 10;
 	    }
 	    echo "<input type='text' name='$name' size='$size' value='$value' />";
 	}
 
 
-    public function mixpanel_init(){		
+    public function mixpanel_init(){
 		register_setting('mixpanel_settings_group', 'mixpanel_settings'); # array($this, 'validate'));
       	$settings = (array) get_option( 'mixpanel_settings' );
 
@@ -91,40 +83,40 @@ class mixPanel {
 		    'Mixpanel ',
 		    array($this, 'print_section_info'),
 		    'mixpanel_options'
-		);	
-		
+		);
+
 		add_settings_field(
-		    'token_id', 
+		    'token_id',
 		    'Mixpanel Token ID', // human readable part
 		    array($this, 'my_text_input'),  // the function that renders the field
-		    	'mixpanel_options', 
+		    	'mixpanel_options',
 		    	'mixpanel_settings_section', array(
 			    	'name' => 'mixpanel_settings[token_id]',
 			    	'value' => $settings['token_id'],
-				)	 
-		);	
+				)
+		);
 
 		add_settings_field(
-		    'debug_mode', 
+		    'debug_mode',
 		    'Debug Mode? (true/false)', // human readable part
 		    array($this, 'my_text_input'),  // the function that renders the field
-		    	'mixpanel_options', 
+		    	'mixpanel_options',
 		    	'mixpanel_settings_section', array(
 			    	'name' => 'mixpanel_settings[debug_mode]',
 			    	'value' => $settings['debug_mode'],
-				)	 
-		);	
-		
+				)
+		);
+
 		add_settings_field(
-		    'subdomain_cookies', 
+		    'subdomain_cookies',
 		    'Use Subdomain Cookie? (true/false)', // human readable part
 		    array($this, 'my_text_input'),  // the function that renders the field
-		    	'mixpanel_options', 
+		    	'mixpanel_options',
 		    	'mixpanel_settings_section', array(
 			    	'name' => 'mixpanel_settings[subdomain_cookie]',
 			    	'value' => $settings['subdomain_cookie'],
-				)	 
-		);	
+				)
+		);
 
 	}
 
@@ -133,11 +125,11 @@ class mixPanel {
 	public function validate( $input ) {
 		   $output = get_option( 'mixpanel_settings' );
 
-		
+
 	    if ( ctype_alnum( $input['token_id'] ) ) {
 	        $output['token_id'] = $input['token_id'];
 	    } else {
-	    	echo "Adding Error \n"; #die; 
+	    	echo "Adding Error \n"; #die;
 	        add_settings_error( 'mixpanel_options', 'token_id', 'The Mixpanel Token looks invalid (should be alpha numeric)' );
 	    }
 
@@ -148,6 +140,6 @@ class mixPanel {
 
 }
 
-$mixPanel = new mixPanel(); 
+$mixPanel = new mixPanel();
 
 ?>
