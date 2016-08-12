@@ -50,70 +50,9 @@ class MixPanel {
      */
     ?>
     <script type='text/javascript'>
-    	// function monaeo_form_onsuccess(id) {
-      //   	var form = jQuery('input[name="_wpcf7"][value="' + id + '"]').closest("form");
-      //   	var email = form.find('[name="email"]').val();
-      //   	var firstName = form.find('[name="first-name"]').val();
-      //   	var lastName = form.find('[name="last-name"]').val();
-      //   	var company = form.find('[name="company"]').val();
-      //   	var title = form.find('[name="title"]').val();
-      //   	var phone = form.find('[name="phone"]').val();
-      //   	mixpanel.alias(email);
-      //   	mixpanel.register({
-      //       	"email": email,
-      //       	"first name": firstName,
-      //       	"last name": lastName,
-      //       	"company": company,
-      //       	"title": title,
-      //       	"phone": phone
-      //   	});
-      //   	mixpanel.people.set({
-      //       	"$email": email,
-      //       	"$first_name": firstName,
-      //       	"$last_name": lastName
-      //       });
-    	// }
-
-    	jQuery( document ).ready(function() {
-			  // jQuery('#site-header .sign-in button').click(function() {
-				//   var signInCount = mixpanel.get_property('Sign In Count') || 0;
-				//   signInCount++;
-				//   mixpanel.register({
-				// 	  'Sign In Count': signInCount,
-				// 	  'Last Sign In Date': new Date().toISOString()
-				//   });
-				//   mixpanel.track('Sign In');
-			  // });
-			  // jQuery('#site-wrapper a[href^="/demo"]').click(function(event) {
-			  // 	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
-				//   mixpanel.track(eventName, {
-				// 	  'source page': document.title,
-				// 	  'button location': event.currentTarget.id
-				//   });
-			  // });
-			  // jQuery('#site-header a[href^="/demo"]').click(function(event) {
-			  // 	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
-				//   mixpanel.track(eventName, {
-				// 	  'source page': document.title,
-				// 	  'button location': event.currentTarget.id
-				//   });
-			  // });
-			  jQuery('#site-footer a[href^="/demo"]').click(function(event) {
-			  	  var eventName = jQuery(this).attr('href') === '/demo-ra' ? 'Book a Risk Analysis Demo' : 'Book a Demo';
-				  mixpanel.track(eventName, {
-					  'button location': 'Footer'
-				  });
-			  });
-			  // jQuery('a[href^="/support"]').click(function(event) {
-				//   mixpanel.track('Support Clicked', {
-				// 	  'Topic': jQuery(event.currentTarget).text()
-				//   });
-			  // });
-			  // jQuery('ul.download a, a[href^="/app-downloads"]').click(function(event) {
-				//   mixpanel.register({'App store': event.currentTarget.id});
-				//   mixpanel.track('Download App');
-			  // });
-		  });
+      window.document.getElementsByClassName("mavenxCTA")[0].addEventListener("click", function(event) {
+		    mixpanel.track('joinmaven CTA click', {});
+    	});
     </script>
     <?php
     /*
