@@ -50,9 +50,12 @@ class MixPanel {
      */
     ?>
     <script type='text/javascript'>
-      window.document.getElementsByClassName("mavenxCTA")[0].addEventListener("click", function(event) {
-		    mixpanel.track('joinmaven CTA click', {});
-    	});
+      var ctaClicks = window.document.getElementsByClassName("mavenxCTA");
+      [].forEach.call(ctaClicks, function (cta) {
+        cta.addEventListener("click", function(event) {
+          mixpanel.track('joinmaven CTA click', {});
+      	});
+      });
     </script>
     <?php
     /*
