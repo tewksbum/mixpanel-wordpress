@@ -21,6 +21,7 @@ function mavenx_blogger_box(){
   global $post;
   $mavenx_blogger_type = get_post_meta( $post->ID, 'mavenx_blogger_type', true );
   $mavenx_blogger_grade = get_post_meta( $post->ID, 'mavenx_blogger_grade', true );
+  $mavenx_blogger_email = get_post_meta( $post->ID, 'mavenx_blogger_email', true );
   ?>
   <table class="form_table">
     <tr>
@@ -30,6 +31,10 @@ function mavenx_blogger_box(){
     <tr>
       <th width="30%"><label for="mavenx_blogger_grade">Blogger Grade:</label></th>
       <td width="70%"><input type="text" size="60" name="mavenx_blogger_grade" value="<?php echo $mavenx_blogger_grade; ?>" /></td>
+    </tr>
+    <tr>
+      <th width="30%"><label for="mavenx_blogger_email">Blogger Email:</label></th>
+      <td width="70%"><input type="text" size="60" name="mavenx_blogger_email" value="<?php echo $mavenx_blogger_email; ?>" /></td>
     </tr>
   </table>
   <?php
@@ -64,6 +69,7 @@ function mavenx_update_event_label( $post_id ){
   if( isset($_POST['mixpanel_event_label']) ){
     update_post_meta( $post_id, 'mavenx_blogger_grade', $_POST['mavenx_blogger_grade'] );
     update_post_meta( $post_id, 'mavenx_blogger_type', $_POST['mavenx_blogger_type'] );
+    update_post_meta( $post_id, 'mavenx_blogger_email', $_POST['mavenx_blogger_email'] );
   }
 }
 ?>
