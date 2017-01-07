@@ -2,8 +2,16 @@
 
 add_action( 'admin_menu', 'mixpanel_create_meta_box' );
 add_action( 'admin_menu', 'mavenx_create_meta_box' );
+add_action( 'admin_menu', 'page_create_meta_box' );
 add_action( 'save_post', 'mixpanel_update_event_label' );
 add_action( 'save_post', 'mavenx_update_event_label' );
+add_action( 'save_post', 'page_update_event_label' );
+
+function page_create_meta_box(){
+  if( function_exists('add_meta_box') ){
+    add_meta_box( 'mixpanel-event-label', 'MixPanel Event Label', 'page_event_box', 'page' );
+  }
+}
 
 function mixpanel_create_meta_box(){
   if( function_exists('add_meta_box') ){
@@ -15,6 +23,19 @@ function mavenx_create_meta_box(){
   if( function_exists('add_meta_box') ){
     add_meta_box( 'mavenx-event-label', 'Blogger Meta', 'mavenx_blogger_box', 'post' );
   }
+}
+
+function page_event_box(){
+  global $post;
+  $page_event_label = get_post_meta( $post->ID, 'mixpanel_event_label', true );
+  ?>
+  <table class="form_table">
+    <tr>
+      <th width="30%"><label for="page_event_label">MixPanel Event</label></th>
+      <td width="70%"><input type="text" size="60" name="page_event_label" value="<?php echo $page_event_label; ?>" /></td>
+    </tr>
+  </table>
+  <?php
 }
 
 function mavenx_blogger_box(){
@@ -56,6 +77,12 @@ function mixpanel_event_box(){
     </tr>
   </table>
   <?php
+}
+
+function page_update_event_label( $post_id ){
+  if( isset($_POST['page_event_label']) ){
+    update_post_meta( $post_id, 'page_event_label', $_POST['mixpanel_event_label'] );
+  }
 }
 
 function mixpanel_update_event_label( $post_id ){

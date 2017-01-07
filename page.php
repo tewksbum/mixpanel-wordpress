@@ -13,7 +13,6 @@ class MixPanel {
   static function get_post_event_label()
   {
     global $post;
-
     return get_post_meta( $post->ID, 'mixpanel_event_label', true );
   }
 
