@@ -18,8 +18,8 @@
 
 	let raf = getParameterByName('raf');
   let ls = getParameterByName('ls');
-	mixpanel.people.set_once({ leadSource: raf || ls || 'organic' });
-  mixpanel.register_once({ leadSource: raf || ls || 'organic' });
+	mixpanel.people.set({ leadSource: raf || ls || 'organic' });
+  mixpanel.register({ leadSource: raf || ls || 'organic' });
 	if (raf) {
       mixpanel.people.set({ raf });
       mixpanel.register({ raf });

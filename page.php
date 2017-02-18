@@ -1,4 +1,4 @@
-<?php
+``<?php
 add_action('wp_head', array('MixPanel', 'insert_tracker'));
 add_action('wp_footer', array('MixPanel', 'insert_event'));
 add_action('wp_enqueue_scripts', array('MixPanel', 'jquery_ui_scrollable'));
@@ -32,15 +32,13 @@ class MixPanel {
     echo "<script>console.log( 'trying to set event: " . $event_label . " (EOL)' );</script>";
     if (!empty($event_label)) {
 		echo "<script type='text/javascript'>
-		  mixpanel.register_once({
-			'First page': document.title,
-			'First page visit date': new Date().toISOString(),
-		  });
-		  mixpanel.track(\"$event_label\", {
-			'Page Name': document.title,
-			'Page Url': window.location.pathname,
-      'Label': '$event_label',
-		  });
+      jQuery(document).ready(function(){
+	      mixpanel.track(\"$event_label\", {
+         'Page Name': document.title,
+         'Page Url': window.location.pathname,
+         'Label': '$event_label',
+        });
+      })
 		 </script>";
     }
     echo "<script>console.log( 'set event: " . $event_label . " (EOL)' );</script>";
